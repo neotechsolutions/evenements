@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test API</title>
+    <style>
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<button id="but1">Appel Houblon</button>
+	<textarea id="res1"></textarea>
+	<div id="error1" style="color:red"></div>
+	<br/>
+    <script>
+	var port="23546";
+	
+        $(document).ready(function () {
+			$( "#but1" ).click(function() {
+				$.ajax({
+					type: "GET",
+					url: "http://localhost:" + port + "/api/houblons",
+				}).done(function (data) {
+					var resultat = "Nb elements : " + data.length + "\n";
+					var index;
+					for (index = 0; index < data.length; ++index) {
+						resultat += data[index].Nom + "\n";
+					}
+					res1.innerHTML = resultat;
+				}).error(function (err, message ) {
+					error1.innerHTML = message;
+				});
+			});
+        });
+    </script>
+
+</body>
+</html>

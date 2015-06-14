@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF242030-D599-45C2-ADB1-D8EBACD369E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{455807D5-D30A-472E-BD25-1510F69C3D03}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DemoWebApi", "src\DemoWebApi\DemoWebApi.xproj", "{36F86F7F-EF1F-4973-BE74-62E4A80A1362}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A9573DB1-E80E-4886-A60F-FC5E4C95B4E3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DemoWebApi.Tests", "test\DemoWebApi.Tests\DemoWebApi.Tests.xproj", "{162BEF4D-020C-47F4-989B-6C07E17C5883}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Swashbuckle", "..\WebApiTD\src\Swashbuckle\Swashbuckle.xproj", "{19D3A02C-A96C-477B-8946-F6F5DAB58FC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36F86F7F-EF1F-4973-BE74-62E4A80A1362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F86F7F-EF1F-4973-BE74-62E4A80A1362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F86F7F-EF1F-4973-BE74-62E4A80A1362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F86F7F-EF1F-4973-BE74-62E4A80A1362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162BEF4D-020C-47F4-989B-6C07E17C5883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162BEF4D-020C-47F4-989B-6C07E17C5883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162BEF4D-020C-47F4-989B-6C07E17C5883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162BEF4D-020C-47F4-989B-6C07E17C5883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D3A02C-A96C-477B-8946-F6F5DAB58FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D3A02C-A96C-477B-8946-F6F5DAB58FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D3A02C-A96C-477B-8946-F6F5DAB58FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D3A02C-A96C-477B-8946-F6F5DAB58FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36F86F7F-EF1F-4973-BE74-62E4A80A1362} = {EF242030-D599-45C2-ADB1-D8EBACD369E8}
+		{162BEF4D-020C-47F4-989B-6C07E17C5883} = {A9573DB1-E80E-4886-A60F-FC5E4C95B4E3}
+		{19D3A02C-A96C-477B-8946-F6F5DAB58FC8} = {EF242030-D599-45C2-ADB1-D8EBACD369E8}
+	EndGlobalSection
+EndGlobal
