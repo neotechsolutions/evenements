@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="DemoW10IoT.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoW10IoT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<!--VSM-->
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup x:Name="LightVisualStateGroup">
+				<VisualStateGroup.Transitions>
+					<VisualTransition From="OnVisualState"
+									  GeneratedDuration="0:0:0.5"
+									  To="OffVisualState">
+						<VisualTransition.GeneratedEasingFunction>
+							<BounceEase EasingMode="EaseOut" />
+						</VisualTransition.GeneratedEasingFunction>
+						<Storyboard />
+					</VisualTransition>
+				</VisualStateGroup.Transitions>
+				<VisualState x:Name="OnVisualState">
+					<Storyboard>
+						<ColorAnimation Duration="0"
+										To="#FFF9E412"
+										Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+										Storyboard.TargetName="rectangle" />
+						<DoubleAnimation Duration="0:0:0.5"
+										 To="2"
+										 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
+										 Storyboard.TargetName="stackPanel">
+							<DoubleAnimation.EasingFunction>
+								<BounceEase EasingMode="EaseOut" />
+							</DoubleAnimation.EasingFunction>
+						</DoubleAnimation>
+						<DoubleAnimation Duration="0:0:0.5"
+										 To="2"
+										 Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
+										 Storyboard.TargetName="stackPanel">
+							<DoubleAnimation.EasingFunction>
+								<BounceEase EasingMode="EaseOut" />
+							</DoubleAnimation.EasingFunction>
+						</DoubleAnimation>
+					</Storyboard>
+				</VisualState>
+				<VisualState x:Name="OffVisualState">
+					<Storyboard>
+						<ColorAnimation Duration="0"
+										To="#FF404040"
+										Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+										Storyboard.TargetName="rectangle" />
+					</Storyboard>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+
+		<!--LIGHT-->
+		<StackPanel x:Name="stackPanel"
+					Orientation="Vertical"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center"
+					RenderTransformOrigin="0.5,0.5">
+			<StackPanel.RenderTransform>
+				<CompositeTransform />
+			</StackPanel.RenderTransform>
+			<Rectangle x:Name="rectangle"
+					   Fill="#FF4B4B4B"
+					   Height="200"
+					   Width="200"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FF8B8B8B"
+					   Height="20"
+					   Width="100"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FFD6D6D1"
+					   Height="20"
+					   Width="100"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FF8B8B8B"
+					   Height="20"
+					   Width="100"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FFD6D6D1"
+					   Height="20"
+					   Width="100"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FF8B8B8B"
+					   Height="10"
+					   Width="40"
+					   HorizontalAlignment="Center" />
+			<Rectangle Fill="#FF343434"
+					   Height="10"
+					   Width="20"
+					   HorizontalAlignment="Center" />
+		</StackPanel>
+
+	</Grid>
+</Page>

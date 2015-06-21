@@ -1,0 +1,76 @@
+﻿<Page x:Class="DemoW10.Views.FullMapPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="using:DemoW10.Views"
+	  xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+	  DataContext="{Binding Path=Main, Source={StaticResource Locator}}">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<!--PARAMETERS-->
+		<RelativePanel Margin="10,5,10,5">
+			
+			<!--STATIONS-->
+			<TextBlock x:Name="StationLabel"
+					   Text="Stations" />
+			<ComboBox x:Name="StationList"
+					  ItemsSource="{Binding Stations}"
+					  DisplayMemberPath="StationData.Title"
+					  Width="150"
+					  SelectionChanged="OnStationListSelectionChanged"
+					  RelativePanel.Below="StationLabel"
+					  Margin="0,0,10,0" />
+
+			<!--MODE-->
+			<TextBlock x:Name="ModeLabel"
+					   Text="Mode"
+					   RelativePanel.RightOf="StationList" />
+			<ComboBox x:Name="ModeList"
+					  Width="150"
+					  SelectionChanged="OnModeComboBoxSelectionChanged"
+					  RelativePanel.Below="ModeLabel"
+					  RelativePanel.AlignLeftWith="ModeLabel"
+					  Margin="0,0,10,0" />
+
+			<!--STREETSIDE-->
+			<Button x:Name="StreetSideButton"
+					Content="StreetSide"
+					Click="OnStreetSideClick"
+					RelativePanel.RightOf="ModeList"
+					RelativePanel.AlignBottomWith="ModeList"
+					Margin="0,0,10,0" />
+
+			<!--MODE-->
+			<TextBlock x:Name="TrafficLabel"
+					   Text="Afficher le traffic"
+					   RelativePanel.RightOf="StreetSideButton" />
+			<CheckBox x:Name="TrafficCheckBox"
+					  Checked="OnTrafficCheckBoxChecked"
+					  Unchecked="OnTrafficCheckBoxChecked"
+					  RelativePanel.Below="TrafficLabel"
+					  RelativePanel.AlignLeftWith="TrafficLabel" />
+
+			<!--ELEMENTS-->
+			<Button
+					Content="Ajouter à la carte"
+					Click="OnAddElementClick"
+					RelativePanel.RightOf="TrafficCheckBox"
+					RelativePanel.AlignBottomWithPanel="True"
+					Margin="0,0,10,0" />
+
+		</RelativePanel>
+
+		<!--MAP-->
+		<maps:MapControl x:Name="myMap"
+						 BusinessLandmarksVisible="True"
+						 LandmarksVisible="True"
+						 MapServiceToken="__YourBingMapKey__"
+						 Grid.Row="1" />
+
+
+	</Grid>
+</Page>

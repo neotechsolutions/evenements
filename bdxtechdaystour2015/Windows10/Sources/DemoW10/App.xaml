@@ -1,0 +1,106 @@
+<Application x:Class="DemoW10.App"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="using:DemoW10"
+			 RequestedTheme="Light"
+			 xmlns:converters="using:DemoW10.Converters"
+			 xmlns:vm="using:DemoW10.ViewModel">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Assets/Styles.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<!--BRUSHES-->
+			<SolidColorBrush x:Key="AvailableBrush"
+							 Color="#FF459B3A" />
+			<SolidColorBrush x:Key="WarningBrush"
+							 Color="#FFDE8A35" />
+			<SolidColorBrush x:Key="UnavailableBrush"
+							 Color="#FFE02828" />
+			<SolidColorBrush x:Key="HeaderBrush"
+							 Color="#FF97D6D7" />
+						
+			<!--LOCATOR-->
+			<vm:ViewModelLocator x:Key="Locator"
+								 xmlns:vm="using:DemoW10.ViewModel" />
+			
+			<!--ICONS-->
+			<x:String x:Key="BikeIcon">M6.19868,22.2499 L4.87864,23.8498 C3.69256,25.6054 3,27.7218 3.00001,30 C3,36.0751 7.92487,41 14,41 C19.8853,41 24.6911,36.3781 24.9857,30.5661 L24.9873,30.5034 L15.422,30.547 L15.3847,30.441 L15.2722,30.5433 C14.9265,30.8286 14.4833,31 14,31 C12.8954,31 12,30.1046 12,29 C12,28.7239 12.056,28.4608 12.1572,28.2215 L12.2391,28.1 L11.6732,27.552 C10.0897,26.0183 7.98787,23.9827 6.40435,22.4491 z M57,19 C56.2406,19 55.4992,19.077 54.7831,19.2235 L54.5172,19.2849 L58.391,27.9687 L58.2605,28.0189 L58.4031,28.0406 C59.3144,28.2271 60,29.0335 60,30 C60,31.1046 59.1046,32 58,32 C56.8954,32 56,31.1046 56,30 C56,29.5168 56.1714,29.0735 56.4567,28.7278 L56.4781,28.7043 L56.3594,28.75 L52.4415,19.9896 L52.231,20.0847 C48.5442,21.8612 46,25.6335 46,30 C46,36.0751 50.9249,41 57,41 C63.0751,41 68,36.0751 68,30 C68,23.9249 63.0751,19 57,19 z M27.0778,18.031 L24.4744,20.7152 L24.8031,21.0947 C26.3723,22.9961 27.4492,25.3189 27.8387,27.8679 L27.9111,28.4376 L29.1719,28.4375 L30.031,27.0313 z M47.141,11.484 L29.641,16.7964 L32.6094,25.953 L32.6616,25.9647 L33.3913,22.0309 L32.5625,21.9997 L32.5314,20.6252 L35.891,20.547 L35.8124,22.1096 L34.5621,22.1096 L33.7356,26.2048 z M54,0 C55.1046,3E-06 56,0.895433 56,2 C56,3.10457 55.1046,4 54,4 L53.8817,3.99403 L53,5.70231 L49.0156,6.9522 L53.2768,16.5045 L53.5012,16.4408 C54.6195,16.153 55.7919,16 57,16 C64.732,16 71,22.268 71,30 C71,37.732 64.732,44 57,44 C49.268,44 43,37.732 43,30 C43,24.4426 46.2381,19.6416 50.9304,17.3806 L51.2167,17.2511 L49.406,13.2023 L35.6488,27.9707 L35.6549,27.9826 C35.876,28.4416 36,28.9563 36,29.5 C36,31.433 34.433,33 32.5,33 L32.4571,32.9982 L31.4061,36.7499 L32.3903,36.7499 L32.3747,38.4375 L28.937,38.516 L29.0155,36.7972 L30.2189,36.7193 L31.1822,32.7412 L31.118,32.7166 C30.1853,32.3153 29.462,31.5203 29.1574,30.5408 L29.1414,30.4845 L27.9905,30.4897 L27.9818,30.7204 C27.6068,38.1176 21.4904,44 14,44 C6.26801,44 4E-06,37.732 0,30 C4E-06,22.268 6.26801,16 14,16 C17.1411,16 20.0406,17.0345 22.3764,18.7813 L22.8517,19.1548 L26.2032,15.7813 L25.7343,13.9063 L26.4375,13.75 L23.9375,6.48437 C21.7837,7.56013 19.6492,6.87698 17.5312,4.68752 C16.9624,3.84215 17.2131,3.13303 17.9218,2.50004 L30.5,2.50004 C31.3774,2.91658 31.5461,3.3598 31.0469,3.82815 L25.1875,5.93752 L27.6874,13.3594 L28.5469,13.125 L28.9375,13.9844 L47.1406,8.67188 L46.3593,5.39067 L51.5157,4.06247 L52.1825,2.83105 L52.1572,2.77849 C52.056,2.53921 52,2.27614 52,2 C52,0.895433 52.8954,3E-06 54,0 z</x:String>
+			<x:String x:Key="BikeSlotIcon">M32.9167,14.8333 C38.5931,14.2287 44.3626,15.0081 50.208,16.917 C50.208,16.917 45.0919,50.9758 45.0919,50.9758 C45.0919,50.9758 44.9999,57.7441 44.9999,57.7441 L35.2081,57.7042 C33.3459,43.4562 32.52,29.0528 32.9167,14.8333 z</x:String>
+					
+			<!--CONVERTERS-->
+			<converters:AvailabilityPercentageToBrushConverter x:Key="AvailabilityPercentageToBrushConverter"
+															   AvailableBrush="{StaticResource AvailableBrush}"
+															   UnavailableBrush="{StaticResource UnavailableBrush}"
+															   WarningBrush="{StaticResource WarningBrush}" />
+						
+			<!--TEMPLATES-->
+			<DataTemplate x:Key="StationDataTemplate">
+				<RelativePanel Margin="10">
+					
+					<TextBlock x:Name="TitleLabel"
+							   Text="{Binding Path=StationData.Title}"
+							   Style="{StaticResource TitleTextBlockStyle}"
+							   RelativePanel.AlignTopWithPanel="True" />
+										
+					<TextBlock x:Name="AddressLabel"
+							   Text="{Binding Path=StationData.Address}"
+							   Style="{StaticResource CaptionTextBlockStyle}"
+							   Margin="0,0,0,5"
+							   RelativePanel.Below="TitleLabel" />
+					
+					<Rectangle x:Name="BikeCountBlock"
+							   Width="74"
+							   Height="33"
+							   Fill="{Binding Path=BikeAvailabilityPercentage, Converter={StaticResource AvailabilityPercentageToBrushConverter}}"
+							   RelativePanel.Below="AddressLabel" />
+
+					<Path x:Name="BikeCountIcon"
+						  Data="{StaticResource BikeIcon}"
+						  Stretch="Uniform"
+						  Fill="White"
+						  Height="25"
+						  Width="28"
+						  Margin="4,0,0,0"
+						  RelativePanel.AlignLeftWith="BikeCountBlock"
+						  RelativePanel.AlignVerticalCenterWith="BikeCountBlock" />
+
+					<TextBlock Text="{Binding Path=StationData.AvailableVehicules}"
+							   Foreground="White"
+							   Style="{StaticResource BaseTextBlockStyle}"
+							   Margin="8,0"
+							   RelativePanel.AlignRightWith="BikeCountBlock"
+							   RelativePanel.AlignVerticalCenterWith="BikeCountBlock" />
+					
+					<Rectangle x:Name="SlotCountBlock"
+							   Width="74"
+							   Height="33"
+							   Margin="10,0,0,0"
+							   Fill="{Binding Path=SlotAvailabilityPercentage, Converter={StaticResource AvailabilityPercentageToBrushConverter}}"
+							   RelativePanel.AlignTopWith="BikeCountBlock"
+							   RelativePanel.RightOf="BikeCountBlock" />
+
+					<Path x:Name="BikeSlotIcon"
+						  Data="{StaticResource BikeSlotIcon}"
+						  Height="18"
+						  Width="28"
+						  Margin="8,0,0,0"
+						  Stretch="Uniform"
+						  Fill="White"
+						  RelativePanel.AlignLeftWith="SlotCountBlock"
+						  RelativePanel.AlignVerticalCenterWith="SlotCountBlock" />
+
+					<TextBlock Text="{Binding Path=StationData.AvailableSlots}"
+							   Foreground="White"
+							   Style="{StaticResource BaseTextBlockStyle}"
+							   Margin="8,0"
+							   RelativePanel.AlignRightWith="SlotCountBlock"
+							   RelativePanel.AlignVerticalCenterWith="SlotCountBlock" />
+				</RelativePanel>
+
+			</DataTemplate>
+			
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="DemoW10.Views.StationDetailsView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="using:DemoW10.Views"
+			 xmlns:maps="using:Windows.UI.Xaml.Controls.Maps">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<!--INDICATIONS-->
+		<ContentPresenter ContentTemplate="{StaticResource StationDataTemplate}"
+						  Margin="0,0,0,10" />
+
+		<!--MAP-->
+		<maps:MapControl x:Name="myMap"
+						 BusinessLandmarksVisible="True"
+						 LandmarksVisible="True"
+						 MapServiceToken="__YourBingMapKey__"
+						 Grid.Row="1" />
+
+	</Grid>
+</UserControl>

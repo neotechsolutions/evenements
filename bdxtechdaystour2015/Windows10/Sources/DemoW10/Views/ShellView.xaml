@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="DemoW10.Views.ShellView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 x:Name="ShellRoot"
+			 DataContext="{Binding Path=Main, Source={StaticResource Locator}}">
+
+	<Grid>
+
+		<!--SPLITVIEW-->
+		<SplitView x:Name="SplitViewPanel"
+				   PanePlacement="Left"
+				   DisplayMode="CompactOverlay"
+				   PaneBackground="{StaticResource HeaderBrush}"
+				   OpenPaneLength="240"
+				   CompactPaneLength="58"
+				   IsPaneOpen="{Binding Path=IsPaneOpened, Mode=TwoWay}"
+				   Margin="0,56,0,0">
+
+			<!--PANEL-->
+			<SplitView.Pane>
+				<StackPanel>
+
+					<!--STATIONS-->
+					<RadioButton Tag="&#xE1C4;"
+								 Content="LES STATIONS"
+								 IsChecked="True"
+								 Style="{StaticResource NavRadioButtonStyle}"
+								 Command="{Binding Path=ShowSectionCommand}"
+								 CommandParameter="MainPage"/>
+
+					<!--MAP-->
+					<RadioButton Tag="&#59397;"
+								 Content="CARTE"
+								 Style="{StaticResource NavRadioButtonStyle}"
+								 Command="{Binding Path=ShowSectionCommand}"
+								 CommandParameter="FullMapPage" />
+
+					<!--SETTINGS-->
+					<RadioButton Tag="&#xE115;"
+								 Content="PARAMETRES"
+								 Style="{StaticResource NavRadioButtonStyle}"
+								 Command="{Binding Path=ShowSectionCommand}"
+								 CommandParameter="SettingsPage" />
+
+					<!--FEEDBACKS-->
+					<RadioButton Tag="&#xE170;"
+								 Content="RETOURS"
+								 Style="{StaticResource NavRadioButtonStyle}"
+								 Command="{Binding Path=ShowSectionCommand}"
+								 CommandParameter="FeedbackPage"/>
+
+				</StackPanel>
+			</SplitView.Pane>
+
+			<!--CONTENT-->
+			<SplitView.Content>
+				<ContentControl Content="{Binding Path=Frame, ElementName=ShellRoot}"
+								HorizontalContentAlignment="Stretch"
+								VerticalContentAlignment="Stretch" />
+			</SplitView.Content>
+
+		</SplitView>
+
+		<!--HEADER-->
+		<Grid Height="56"
+			  VerticalAlignment="Top"
+			  Background="{StaticResource HeaderBrush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="58" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<!--HAMBURGER-->
+			<Button x:Name="HamburgerButton"
+					Style="{StaticResource HamburgerButtonStyle}"
+					Command="{Binding Path=ToggleMenuCommand}" />
+
+			<!--BACK-->
+			<Button x:Name="BackButton"
+					TabIndex="2"
+					Style="{StaticResource NavigationBackButtonStyle}"
+					IsEnabled="{Binding Path=Frame.CanGoBack, ElementName=ShellRoot}"
+					Click="OnBackButtonClick"
+					Grid.Column="1"
+					Width="58" />
+
+			<!--TITLE-->
+			<TextBlock Text="BORDEAUX ON W10 BIKE"
+					   Style="{StaticResource TitleTextBlockStyle}"
+					   Grid.Column="2"
+					   VerticalAlignment="Center"
+					   Margin="12,0,0,0"
+					   Foreground="Black"
+					   FontSize="15" />
+		</Grid>
+	</Grid>
+</UserControl>
