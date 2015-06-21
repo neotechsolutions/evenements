@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test API</title>
+    <style>
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.1.0.min.js"></script>
+	<script src="http://localhost:23546/signalr/hubs"></script>
+</head>
+<body>
+	<button id="but1">Appel Houblon</button>
+	<textarea id="res1"></textarea>
+	<div id="error1" style="color:red"></div>
+	<br/>
+	<button id="but2">Création recette</button>
+	<div id="res2"></div>
+	<div id="error2" style="color:red"></div>
+	<div id="log"></div>
+
+    <script>
+		var port="23546";
+		var userId = "nico";
+        $(document).ready(function () {
+				$.connection.hub.url = "http://localhost:" + port + "/signalr";
+				$.connection.hub.logging = true;
+				$.connection.hub.qs = "userid=" + userId;
+                var notifyHub = $.connection.notifyHub;
+                notifyHub.client.notify = function (message) {
+                    $("#res2").text(message);
+                };
+                $.connection.hub.start().done(function () {
+					$("#log").text($.connection.hub.id);
+                }).fail(function (reason) {
+					console.log("SignalR connection failed: " + reason);
+				});
+		
+			$( "#but1" ).click(function() {
+				$.ajax({
+					type: "GET",
+					url: "http://localhost:" + port + "/api/houblons",
+				}).done(function (data) {
+					var resultat = "Nb elements : " + data.length + "\n";
+					var index;
+					for (index = 0; index < data.length; ++index) {
+						resultat += data[index].Nom + "\n";
+					}
+					res1.innerHTML = resultat;
+				}).error(function (err, message ) {
+					error1.innerHTML = message;
+				});
+			});
+			
+			$( "#but2" ).click(function() {
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:" + port + "/api/biere",
+					data : { id: userId }
+				}).done(function (data) {
+					res2.innerHTML = data;
+				}).error(function (err, message ) {
+					error2.innerHTML = message;
+				});
+			});
+        });
+    </script>
+
+</body>
+</html>
