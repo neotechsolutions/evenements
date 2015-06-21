@@ -56,7 +56,7 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
-		<!--LIGHT-->
+		<!--MINECRAFT'S LIGHT :)-->
 		<StackPanel x:Name="stackPanel"
 					Orientation="Vertical"
 					HorizontalAlignment="Center"

@@ -6,12 +6,18 @@ using Windows.Devices.Gpio;
 
 namespace DemoW10IoT
 {
+	/// <summary>
+	/// Main application page
+	/// </summary>
 	public sealed partial class MainPage : Page
 	{
 		private GpioPin _ledPin;
 		private GpioPin _btnPin;
 		private GpioPinValue _nextLedValue = GpioPinValue.High;
 
+		/// <summary>
+		/// Initialize a new instance
+		/// </summary>
 		public MainPage()
 		{
 			InitializeComponent();
