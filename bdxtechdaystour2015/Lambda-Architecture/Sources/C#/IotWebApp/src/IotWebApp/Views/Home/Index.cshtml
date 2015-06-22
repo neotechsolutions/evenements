@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Real Time View</h2>
+        <p>Current Temperature :</p>
+        <p>
+            <img src="~/images/thermometer.png" />
+            <span id="currentTemperature" style="font-size: 40px"></span>
+        </p>
+    </div>
+    <div class="col-md-8">
+        <h2>Aggregations View</h2>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        var connection;
+        var eventHubProxy;
+        $(document).ready(function () {
+            connection = $.hubConnection();
+            eventHubProxy = connection.createHubProxy('RealTimeHub');
+            eventHubProxy.on('status', function (state) {
+                var json = JSON.parse(state);
+                var num = parseFloat(json[0].value);
+                $("#currentTemperature").text(num.toFixed(2) + "°C");
+            });
+            connection.start()
+                .done(function () {
+                    console.log('Now connected, connection ID=' + connection.id);
+                    eventHubProxy.invoke("subscribe");
+                })
+                .fail(function () { console.log('Could not connect'); });
+
+            var url = 'api/values?to=' + encodeURIComponent(moment().format()) + '&from=' + encodeURIComponent(moment().utc().subtract(1, 'days').format());
+            $.getJSON(url, function (data) {
+                var dates = [];
+                var values = [];
+                for (var i = 0; i < data.length; i++) {
+                    dates.push(moment(data[i].Date.toString()).format("h:mm a"));
+                    values.push(data[i].Value);
+                }
+
+                $('#container').highcharts({
+                    title: {
+                        text: 'Hourly Average Temperature',
+                        x: -20 //center
+                    },
+                    xAxis: {
+                        categories: dates
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Temperature (°C)'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        valueSuffix: '°C'
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [{
+                        name: 'Techdays Tour',
+                        data: values
+                    }]
+                });
+
+            });
+        })
+    </script>
+}
